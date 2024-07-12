@@ -2,6 +2,8 @@
 
 Pick your needed Material Icon for your MUI or React project directly on Visual Studio Code without Alt+Tab to [MUI's Material Icon website](https://mui.com/material-ui/material-icons/)
 
+[![CI status](https://github.com/michioxd/vscode-mui-material-icon-picker/actions/workflows/ci.yaml/badge.svg)](https://github.com/michioxd/vscode-mui-material-icon-picker/actions/workflows/ci.yaml)
+
 <center>
   <img src="https://github.com/user-attachments/assets/930cd8e3-1e3c-438c-8e15-d0d0a209771c" alt="Preview" />
 </center>
