@@ -3,7 +3,7 @@ import * as vscode from 'vscode';
 export function activate(context: vscode.ExtensionContext) {
 	const webview = vscode.commands.registerCommand('vscode-mui-material-icon-picker.showPicker', () => {
 
-		const panel = vscode.window.createWebviewPanel("webview", "Material Icon Picker for MUI", vscode.ViewColumn.One, {
+		const panel = vscode.window.createWebviewPanel("vscode-mui-material-icon-picker.webview", "Material Icon Picker for MUI", vscode.ViewColumn.One, {
 			enableScripts: true,
 			retainContextWhenHidden: true
 		});
@@ -28,6 +28,7 @@ export function activate(context: vscode.ExtensionContext) {
 <html lang="en">
     <head>
         <link rel="stylesheet" href="${cssSrc}" />
+		<meta charset="UTF-8">
     </head>
     <body>
 		<noscript>You need to enable JavaScript to run this app.</noscript>

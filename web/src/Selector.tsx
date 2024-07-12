@@ -63,11 +63,14 @@ const ListIcon = memo(({ keyword, filter, setPreview }: { keyword: string, filte
     }, [key, filter, keyword]);
 
     return (
-        <div className={cls.ListIcon}>
+        <div className={cls.ListIcon} data-vscode-context='{"webviewSection": "listIcon", "mouseCount": 4}'>
             {icons.map((icon, index) => {
                 const MuiIcon = icon.Component;
                 return (
-                    <div className={cls.IconItem} onClick={() => setPreview(icon.importName)} key={index}>
+                    <div className={cls.IconItem} onClick={(e) => {
+                        setPreview(icon.importName);
+                        console.log(e);
+                    }} key={index} data-vscode-context='{"webviewSection": "iconItems", "preventDefaultContextMenuItems": true}'>
                         <div className={cls.Preview}>
                             {/* @ts-ignore */}
                             <MuiIcon fontSize="large" />
@@ -154,7 +157,7 @@ export default function Selector() {
 
     return (
         <>
-            <div className={cls.MainSelector}>
+            <div className={cls.MainSelector} data-vscode-context='{"webviewSection": "main", "preventDefaultContextMenuItems": true, ""}'>
                 <div className={cls.Sidebar}>
                     <p className={cls.TextFilter}>
                         Filter the style
