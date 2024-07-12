@@ -17,10 +17,21 @@ jobs:
       - run: npm i -g pnpm
       - run: pnpm install
       - name: Testing extension
-        if: runner.os == 'Linux'
-        run: xvfb-run -a pnpm test
-      - name: Testing web
-        if: runner.os == 'Linux'
-        run: cd web && xvfb-run -a pnpm test
+        run: |
+          if [[ ${{ runner.os }} == 'Linux' ]]; then
+            xvfb-run -a pnpm test
+          else
+            pnpm test
+          fi
+      - name: Install Web dependencies
+        run: cd web && pnpm i --frozen-lockfile
+      - name: Testing Web
+        run: |
+          cd web
+          if [[ ${{ runner.os }} == 'Linux' ]]; then
+            xvfb-run -a pnpm test
+          else
+            pnpm test
+          fi
       - name: Trying build web
         run: cd web && pnpm run build
