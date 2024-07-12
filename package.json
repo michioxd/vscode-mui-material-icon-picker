@@ -15,7 +15,7 @@
   "publisher": "michioxd",
   "license": "MIT",
   "engines": {
-    "vscode": "^1.91.0"
+    "vscode": ">=1.91.0"
   },
   "categories": [
     "Notebooks",
