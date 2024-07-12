@@ -30,7 +30,7 @@ You can [tell me](https://github.com/michioxd/vscode-mui-material-icon-picker/is
 
 ## License
 
-This project is licensed under the [MIT License](./LICENSE)
+This project is licensed under the [MIT License](LICENSE)
 
 ## Author
 
