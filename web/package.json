@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "parcel ./src/main.tsx",
     "build": "pnpm run lint && parcel build ./src/main.tsx",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "test": "pnpm run lint && tsc --noEmit"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
