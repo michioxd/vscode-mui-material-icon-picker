@@ -1,0 +1,26 @@
+name: CI
+on: [push, pull_request]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+      - run: npm i -g pnpm
+      - run: pnpm install
+      - name: Testing extension
+        if: runner.os == 'Linux'
+        run: xvfb-run -a pnpm test
+      - name: Testing web
+        if: runner.os == 'Linux'
+        run: cd web && xvfb-run -a pnpm test
+      - name: Trying build web
+        run: cd web && pnpm run build
