@@ -27,22 +27,6 @@
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
-    "menus": {
-      "webview/context": [
-        {
-          "command": "vscode-mui-material-icon-picker.CopyImportSnippet",
-          "when": "webviewId == 'vscode-mui-material-icon-picker.webview' && webviewSection == 'iconItems'"
-        },
-        {
-          "command": "vscode-mui-material-icon-picker.CopyIconSnippet",
-          "when": "webviewId == 'vscode-mui-material-icon-picker.webview' && webviewSection == 'iconItems'"
-        },
-        {
-          "command": "vscode-mui-material-icon-picker.CopyIconName",
-          "when": "webviewId == 'vscode-mui-material-icon-picker.webview' && webviewSection == 'iconItems'"
-        }
-      ]
-    },
     "commands": [
       {
         "command": "vscode-mui-material-icon-picker.showPicker",
@@ -52,24 +36,6 @@
           "light": "./resources/mui/light.svg",
           "dark": "./resources/mui/dark.svg"
         }
-      },
-      {
-        "command": "vscode-mui-material-icon-picker.CopyImportSnippet",
-        "title": "Copy import snippet",
-        "category": "Material Icon Picker for MUI",
-        "enablement": "webviewId == 'vscode-mui-material-icon-picker.webview' && webviewSection == 'iconItems'"
-      },
-      {
-        "command": "vscode-mui-material-icon-picker.CopyIconSnippet",
-        "title": "Copy icon snippet",
-        "category": "Material Icon Picker for MUI",
-        "enablement": "webviewId == 'vscode-mui-material-icon-picker.webview' && webviewSection == 'iconItems'"
-      },
-      {
-        "command": "vscode-mui-material-icon-picker.CopyIconName",
-        "title": "Copy icon name",
-        "category": "Material Icon Picker for MUI",
-        "enablement": "webviewId == 'vscode-mui-material-icon-picker.webview' && webviewSection == 'iconItems'"
       }
     ]
   },

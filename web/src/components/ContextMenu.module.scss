@@ -1,0 +1,18 @@
+.ContextMenu {
+    position: fixed;
+    z-index: 88;
+    border-radius: 3px;
+    border: 1px solid var(--button-border);
+    background-color: var(--background);
+    padding: 0.3rem;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transition: 0.2s opacity;
+
+    .ContextMenuItem {
+        padding: 0.3rem 1rem;
+        cursor: pointer;
+        border-radius: 3px;
+    }
+}

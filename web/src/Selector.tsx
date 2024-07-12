@@ -19,6 +19,8 @@ import IconPreview from "./IconPreview";
 // @ts-ignore
 import Index from "flexsearch/dist/module/index";
 import type { Id, Index as IndexType } from "flexsearch";
+import { ContextMenuContainer, useContextMenu } from "./components/ContextMenu";
+import { copy } from "./utils/utils";
 
 interface IconType {
     name: string,
@@ -36,6 +38,51 @@ const listIcon: {
 } = {};
 
 const allIcons = Object.keys(mui).sort();
+
+const IconItem = memo(({ icon, onClick }: { icon: IconType, onClick: () => void }) => {
+    const { showMenu } = useContextMenu();
+
+    const handleContextMenu = (event: MouseEvent) => {
+        showMenu(event, [
+            {
+                label: icon.importName,
+                disabled: true,
+            },
+            {
+                label: 'Copy icon name', onClick: () => {
+                    copy(icon.importName);
+                }
+            },
+            {
+                label: 'Copy icon snippet', onClick: () => {
+                    copy(`<${icon.importName}Icon />`);
+
+                }
+            },
+            {
+                label: 'Copy import snippet', onClick: () => {
+                    copy(`import ${icon.importName} from '@mui/icons-material/${icon.importName}Icon';`);
+                }
+            }
+        ]);
+    };
+
+    const MuiIcon = icon.Component;
+
+    return (
+        <div className={cls.IconItem} onContextMenu={handleContextMenu} onClick={() => {
+            onClick();
+        }} data-vscode-context='{"webviewSection": "iconItems", "preventDefaultContextMenuItems": true}'>
+            <div className={cls.Preview}>
+                {/* @ts-ignore */}
+                <MuiIcon fontSize="large" />
+            </div>
+            <div className={cls.Name}>
+                {icon.importName}
+            </div>
+        </div>
+    );
+});
 
 const ListIcon = memo(({ keyword, filter, setPreview }: { keyword: string, filter: string, setPreview: Dispatch<StateUpdater<string>> }) => {
     const [key, setKey] = useState<Id[] | null>(null);
@@ -63,25 +110,17 @@ const ListIcon = memo(({ keyword, filter, setPreview }: { keyword: string, filte
     }, [key, filter, keyword]);
 
     return (
-        <div className={cls.ListIcon} data-vscode-context='{"webviewSection": "listIcon", "mouseCount": 4}'>
-            {icons.map((icon, index) => {
-                const MuiIcon = icon.Component;
-                return (
-                    <div className={cls.IconItem} onClick={(e) => {
-                        setPreview(icon.importName);
-                        console.log(e);
-                    }} key={index} data-vscode-context='{"webviewSection": "iconItems", "preventDefaultContextMenuItems": true}'>
-                        <div className={cls.Preview}>
-                            {/* @ts-ignore */}
-                            <MuiIcon fontSize="large" />
-                        </div>
-                        <div className={cls.Name}>
-                            {icon.importName}
-                        </div>
-                    </div>
-                );
-            })}
-        </div>
+        <ContextMenuContainer>
+            <div className={cls.ListIcon} data-vscode-context='{"webviewSection": "listIcon", "mouseCount": 4}'>
+                {icons.map((icon, index) => {
+                    return (
+                        <IconItem icon={icon} onClick={() => {
+                            setPreview(icon.importName);
+                        }} key={index} />
+                    );
+                })}
+            </div>
+        </ContextMenuContainer>
     );
 });
 
@@ -157,7 +196,7 @@ export default function Selector() {
 
     return (
         <>
-            <div className={cls.MainSelector} data-vscode-context='{"webviewSection": "main", "preventDefaultContextMenuItems": true, ""}'>
+            <div className={cls.MainSelector} data-vscode-context='{"webviewSection": "main", "preventDefaultContextMenuItems": true}'>
                 <div className={cls.Sidebar}>
                     <p className={cls.TextFilter}>
                         Filter the style
