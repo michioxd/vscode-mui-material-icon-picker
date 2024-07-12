@@ -66,7 +66,7 @@ const IconItem = memo(({ icon, onClick }: { icon: IconType, onClick: () => void 
             },
             {
                 label: 'Copy import snippet', onClick: () => {
-                    copy(`import ${icon.importName} from '@mui/icons-material/${icon.importName}Icon';`);
+                    copy(`import ${icon.importName}Icon from '@mui/icons-material/${icon.importName}Icon';`);
                 }
             }
         ]);
