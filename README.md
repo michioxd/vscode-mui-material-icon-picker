@@ -1,71 +1,37 @@
-# vscode-mui-material-icon-picker README
+# Material Icon Picker for MUI
 
-This is the README for your extension "vscode-mui-material-icon-picker". After writing up a brief description, we recommend including the following sections.
+Pick your needed Material Icon for your MUI or React project directly on Visual Studio Code without Alt+Tab to [MUI's Material Icon website](https://mui.com/material-ui/material-icons/)
+
+<center>
+  <img src="https://github.com/user-attachments/assets/930cd8e3-1e3c-438c-8e15-d0d0a209771c" alt="Preview" />
+</center>
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- Tab Preview (click to the icon).
 
-For example if there is an image subfolder under your extension project workspace:
+  ![Code_hWqziov4cL](https://github.com/user-attachments/assets/ceac98a6-e75c-4927-8bb1-b9f9d2eccbc2)
 
-\!\[feature X\]\(images/feature-x.png\)
+- Context menu for copy snippet.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+  ![Code_idPTPcXX1h](https://github.com/user-attachments/assets/cb614ba7-d076-4d53-b11f-f3bb8510b3bd)
 
-## Requirements
+- Support synonym searching.
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+  ![Code_FyqVj3A9Q2](https://github.com/user-attachments/assets/565c5d9f-673e-47a6-bf9a-dd1fa8d1518c)
 
-## Extension Settings
+## Why?
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+Because my potato pc cannot fully handle MUI Search icon so I made this.
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+You can [tell me](https://github.com/michioxd/vscode-mui-material-icon-picker/issues) :)
 
-## Release Notes
+## License
 
-Users appreciate release notes as you update your extension.
+This project is licensed under the [MIT License](./LICENSE)
 
-### 1.0.0
+## Author
 
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+[michio da neko](https://github.com/michioxd). If you like (or love) this extension, consider [buying for me a coffee](https://github.com/michioxd/michioxd/blob/main/contact.md#donation)!
