@@ -96,6 +96,7 @@ const ListIcon = memo(({ keyword, filter, setPreview }: { keyword: string, filte
     React.useEffect(() => {
         (async () => {
             if (keyword.length < 1) {
+                setKey(null);
                 return;
             }
             const keys = await searchIndex.searchAsync(keyword, {
