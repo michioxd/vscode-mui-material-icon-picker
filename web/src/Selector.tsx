@@ -215,7 +215,7 @@ export default function Selector() {
                         <VSCodeRadio value="Sharp" checked={style === "Sharp"} onChange={() => setStyle("Sharp")}>Sharp</VSCodeRadio>
                     </VSCodeRadioGroup>
                     <div className={cls.Info}>
-                        <p>MUI Material Icon version: <b>5.16.0</b></p>
+                        <p>MUI Material Icon version: <b>5.16.1</b></p>
                         <p>Icons available: <b>{allIcons.length}</b></p>
                         <p>Picker version: <b>0.0.1</b></p>
                     </div>
