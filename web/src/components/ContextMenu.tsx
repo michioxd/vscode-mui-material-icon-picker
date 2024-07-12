@@ -105,13 +105,16 @@ const ContextMenu: React.FC = () => {
     }
 
     return (
-        <div ref={menuRef} className={cls.ContextMenu}>
-            {contextMenu.items.map((item, index) => (
-                <VSCodeOption key={index} disabled={item.disabled} onClick={item.onClick} className={cls.ContextMenuItem}>
-                    {item.label}
-                </VSCodeOption>
-            ))}
-        </div>
+        <>
+            <div className={cls.ContextOverlay}></div>
+            <div ref={menuRef} className={cls.ContextMenu}>
+                {contextMenu.items.map((item, index) => (
+                    <VSCodeOption key={index} disabled={item.disabled} onClick={item.onClick} className={cls.ContextMenuItem}>
+                        {item.label}
+                    </VSCodeOption>
+                ))}
+            </div>
+        </>
     );
 };
 

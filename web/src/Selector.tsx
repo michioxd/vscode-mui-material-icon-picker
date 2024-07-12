@@ -49,6 +49,11 @@ const IconItem = memo(({ icon, onClick }: { icon: IconType, onClick: () => void 
                 disabled: true,
             },
             {
+                label: 'Preview', onClick: () => {
+                    onClick();
+                }
+            },
+            {
                 label: 'Copy icon name', onClick: () => {
                     copy(icon.importName);
                 }
