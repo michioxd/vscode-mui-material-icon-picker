@@ -56,7 +56,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 7rem - 1px);
+    height: calc(100vh - 6rem - 1px);
     width: 100%;
 }
 
@@ -71,6 +71,7 @@
     display: flex;
     flex-direction: row;
     padding: 1rem;
+    padding-bottom: 0;
 
     .Sidebar {
         width: 230px;
@@ -106,7 +107,7 @@
 
         .IconList {
             width: 100%;
-            height: calc(100dvh - 7rem - 1px);
+            height: calc(100dvh - 6rem - 1px);
             display: flex;
         }
 
