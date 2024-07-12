@@ -2,7 +2,7 @@
   "name": "vscode-mui-material-icon-picker",
   "displayName": "Material Icon Picker for MUI",
   "description": "Pick your needed Material Icon for your MUI or React project directly on Visual Studio Code without Alt+Tab to MUI's Material Icon website",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/michioxd/vscode-mui-material-icon-picker"
