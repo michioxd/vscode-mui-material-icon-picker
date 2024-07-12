@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: 22.x
       - run: npm i -g pnpm
-      - run: pnpm install
+      - run: pnpm i --frozen-lockfile
       - name: Testing extension
         run: |
           if [[ ${{ runner.os }} == 'Linux' ]]; then
