@@ -1,6 +1,6 @@
 // src/ContextMenu.tsx
-import React, { createContext, useContext, useState, ReactNode, useEffect, useRef } from 'preact/compat';
-import cls from './ContextMenu.module.scss';
+import React, { createContext, useContext, useState, ReactNode, useEffect, useRef } from 'react';
+import * as cls from './ContextMenu.module.scss';
 import { VSCodeOption } from '@vscode/webview-ui-toolkit/react';
 
 interface MenuItem {
@@ -16,7 +16,7 @@ interface ContextMenuState {
 }
 
 interface ContextMenuContextProps {
-    showMenu: (event: MouseEvent, items: MenuItem[]) => void;
+    showMenu: (event: React.MouseEvent<HTMLDivElement, MouseEvent>, items: MenuItem[]) => void;
     hideMenu: () => void;
     contextMenu: ContextMenuState | null;
 }
@@ -34,7 +34,7 @@ export const useContextMenu = () => {
 const ContextMenuProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [contextMenu, setContextMenu] = useState<ContextMenuState | null>(null);
 
-    const showMenu = (event: MouseEvent, items: MenuItem[]) => {
+    const showMenu = (event: React.MouseEvent<HTMLDivElement, MouseEvent>, items: MenuItem[]) => {
         event.preventDefault();
         setContextMenu({
             x: event.clientX,
@@ -78,7 +78,7 @@ const ContextMenu: React.FC = () => {
                 const menu = menuRef.current;
                 if (!menu) {
                     return;
-                };
+                }
 
                 const { innerWidth, innerHeight } = window;
                 const { clientWidth: menuWidth, clientHeight: menuHeight } = menu;

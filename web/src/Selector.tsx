@@ -10,9 +10,9 @@ import {
     VSCodeBadge
 } from "@vscode/webview-ui-toolkit/react";
 import * as mui from '@mui/icons-material';
-import cls from './style.module.scss';
-import { Dispatch, StateUpdater, useEffect, useMemo, useRef, useState } from "preact/hooks";
-import { memo } from "preact/compat";
+import * as cls from './style.module.scss';
+import React from "react";
+import { memo } from "react";
 import synonyms from './Synonyms';
 import API from "./API";
 import IconPreview from "./IconPreview";
@@ -21,6 +21,7 @@ import Index from "flexsearch/dist/module/index";
 import type { Id, Index as IndexType } from "flexsearch";
 import { ContextMenuContainer, useContextMenu } from "./components/ContextMenu";
 import { copy } from "./utils/utils";
+
 
 interface IconType {
     name: string,
@@ -42,7 +43,7 @@ const allIcons = Object.keys(mui).sort();
 const IconItem = memo(({ icon, onClick }: { icon: IconType, onClick: () => void }) => {
     const { showMenu } = useContextMenu();
 
-    const handleContextMenu = (event: MouseEvent) => {
+    const handleContextMenu = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         showMenu(event, [
             {
                 label: icon.importName,
@@ -89,10 +90,10 @@ const IconItem = memo(({ icon, onClick }: { icon: IconType, onClick: () => void 
     );
 });
 
-const ListIcon = memo(({ keyword, filter, setPreview }: { keyword: string, filter: string, setPreview: Dispatch<StateUpdater<string>> }) => {
-    const [key, setKey] = useState<Id[] | null>(null);
+const ListIcon = memo(({ keyword, filter, setPreview }: { keyword: string, filter: string, setPreview: React.Dispatch<React.SetStateAction<string>> }) => {
+    const [key, setKey] = React.useState<Id[] | null>(null);
 
-    useEffect(() => {
+    React.useEffect(() => {
         (async () => {
             if (keyword.length < 1) {
                 return;
@@ -104,7 +105,7 @@ const ListIcon = memo(({ keyword, filter, setPreview }: { keyword: string, filte
         })();
     }, [keyword]);
 
-    const icons: IconType[] = useMemo(() => {
+    const icons: IconType[] = React.useMemo(() => {
         if (key === null || key.length === 0 && keyword.length < 1) {
             return Object.entries(listIcon).filter((icon) => icon[1].theme === filter).map((icon) => icon[1]);
         }
@@ -130,15 +131,15 @@ const ListIcon = memo(({ keyword, filter, setPreview }: { keyword: string, filte
 });
 
 export default function Selector() {
-    const [search, setSearch] = useState("");
-    const [realSearch, setRealSearch] = useState("");
-    const [preview, setPreview] = useState("");
-    const [active, setActive] = useState("iconSelector");
-    const [style, setStyle] = useState("Filled");
-    const timeout = useRef<NodeJS.Timeout | null>(null);
-    const [indexed, setIndexed] = useState(false);
+    const [search, setSearch] = React.useState("");
+    const [realSearch, setRealSearch] = React.useState("");
+    const [preview, setPreview] = React.useState("");
+    const [active, setActive] = React.useState("iconSelector");
+    const [style, setStyle] = React.useState("Filled");
+    const timeout = React.useRef<NodeJS.Timeout | null>(null);
+    const [indexed, setIndexed] = React.useState(false);
 
-    useEffect(() => {
+    React.useEffect(() => {
         if (timeout.current) {
             clearTimeout(timeout.current);
         }
@@ -147,19 +148,19 @@ export default function Selector() {
         }, 1000);
     }, [search]);
 
-    useEffect(() => {
+    React.useEffect(() => {
         if (preview === "") {
             return;
-        };
+        }
         setActive("iconPreview");
     }, [preview]);
 
-    useEffect(() => {
+    React.useEffect(() => {
         if (indexed) {
             return;
         }
         (async () => {
-            const all = allIcons.map((importName, i) => {
+            const all = allIcons.map((importName) => {
                 return new Promise((resolve) => {
                     let theme;
                     if (importName.indexOf('Outlined') !== -1) {
@@ -197,7 +198,7 @@ export default function Selector() {
             await Promise.all(all);
             setIndexed(true);
         })();
-    }, []);
+    }, [indexed]);
 
     return (
         <>
@@ -226,7 +227,7 @@ export default function Selector() {
                             });
                         }}>
                             MUI Docs
-                            <span slot="start" class="codicon codicon-book"></span>
+                            <span slot="start" className="codicon codicon-book"></span>
                         </VSCodeButton>
                         <VSCodeButton onClick={() => {
                             API.postMessage({
@@ -235,13 +236,13 @@ export default function Selector() {
                             });
                         }}>
                             Fork me on GitHub
-                            <span slot="start" class="codicon codicon-github"></span>
+                            <span slot="start" className="codicon codicon-github"></span>
                         </VSCodeButton>
                     </div>
                 </div>
                 <div className={cls.Selector}>
-                    <VSCodeTextField value={search} onInput={(e: { target: { value: StateUpdater<string>; }; }) => setSearch(e.target.value)} placeholder="Search icons...">
-                        <span slot="start" class="codicon codicon-search"></span>
+                    <VSCodeTextField value={search} onInput={(e) => setSearch((e.target as HTMLInputElement)?.value)} placeholder="Search icons...">
+                        <span slot="start" className="codicon codicon-search"></span>
                     </VSCodeTextField>
                     <VSCodePanels activeid={active}>
                         <VSCodePanelTab id="iconSelector" onClick={() => setActive('iconSelector')}>
@@ -249,7 +250,7 @@ export default function Selector() {
                         </VSCodePanelTab>
                         <VSCodePanelTab id="iconPreview">
                             PREVIEW
-                            {preview && <VSCodeBadge appearance="primary">{preview}</VSCodeBadge>}
+                            {preview && <VSCodeBadge>{preview}</VSCodeBadge>}
                         </VSCodePanelTab>
                         <VSCodePanelView id="iconSelector">
                             <div className={cls.IconList}>

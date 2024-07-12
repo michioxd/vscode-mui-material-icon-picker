@@ -1,5 +1,5 @@
 import { ReactNode } from "preact/compat";
-import cls from "./../style.module.scss";
+import * as cls from "./../style.module.scss";
 
 export default function Copyable({ children, str }: { children: ReactNode, str: string }) {
 

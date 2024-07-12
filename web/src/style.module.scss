@@ -37,15 +37,15 @@
     font-weight: var(--vscode-editor-font-weight);
 
     span {
-        &[name="name"] {
+        &[data-highlight="name"] {
             color: var(--vscode-debugTokenExpression-name);
         }
 
-        &[name="icon"] {
+        &[data-highlight="icon"] {
             color: var(--vscode-debugTokenExpression-type);
         }
 
-        &[name="string"] {
+        &[data-highlight="string"] {
             color: var(--vscode-debugTokenExpression-string);
         }
     }

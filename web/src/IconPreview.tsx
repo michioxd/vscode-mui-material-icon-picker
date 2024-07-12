@@ -1,6 +1,6 @@
-import { memo, useMemo } from 'preact/compat';
+import { memo, useMemo } from 'react';
 import Copyable from './components/Copyable';
-import cls from './style.module.scss';
+import * as cls from './style.module.scss';
 import * as mui from '@mui/icons-material';
 import { VSCodeBadge } from '@vscode/webview-ui-toolkit/react';
 
@@ -35,13 +35,13 @@ const IconPreview = memo(({ icon }: { icon: string }) => {
             }</VSCodeBadge></h2></Copyable>
             <Copyable str={"import " + icon + "Icon from \"@mui/icons-material/" + icon + "\""}>
                 <div className={cls.CodePreview}>
-                    <span name="name">import</span>
+                    <span data-highlight="name">import</span>
                     <span>&nbsp;</span>
-                    <span name="icon">{icon}Icon</span>
+                    <span data-highlight="icon">{icon}Icon</span>
                     <span>&nbsp;</span>
-                    <span name="name">from</span>
+                    <span data-highlight="name">from</span>
                     <span>&nbsp;</span>
-                    <span name="string">"@mui/icons-material/{icon}"</span>
+                    <span data-highlight="string">"@mui/icons-material/{icon}"</span>
                 </div>
             </Copyable>
             <div className={cls.Preview}>

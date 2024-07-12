@@ -3,6 +3,11 @@
   "displayName": "Material Icon Picker for MUI",
   "description": "Pick your needed Material Icon for your MUI or React project directly on Visual Studio Code without Alt+Tab to MUI's Material Icon website",
   "version": "0.0.1",
+  "author": {
+    "email": "michio.haiyaku@gmail.com",
+    "name": "michioxd",
+    "url": "https://github.com/michioxd"
+  },
   "license": "MIT",
   "engines": {
     "vscode": "^1.91.0"
@@ -40,7 +45,7 @@
     ]
   },
   "scripts": {
-    "vscode:prepublish": "pnpm run compile",
+    "vscode:prepublish": "cd web && pnpm run build && cd .. && pnpm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "pretest": "pnpm run compile && pnpm run lint",
