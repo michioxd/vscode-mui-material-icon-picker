@@ -218,7 +218,7 @@ export default function Selector() {
                     <div className={cls.Info}>
                         <p>MUI Material Icon version: <b>5.16.4</b></p>
                         <p>Icons available: <b>{allIcons.length}</b></p>
-                        <p>Picker version: <b>0.0.2</b></p>
+                        <p>Picker version: <b>0.0.3</b></p>
                     </div>
                     <div className={cls.Action}>
                         <VSCodeButton appearance="secondary" onClick={() => {

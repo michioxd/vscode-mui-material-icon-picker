@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.0.3]
+
+- Update `@mui/icons-material` to `5.16.4`
+
 ## [0.0.2]
 
 - Fix search did not update result if remove all keyword from search box.
