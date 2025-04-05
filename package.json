@@ -32,7 +32,7 @@
     "mui material icon",
     "mui material icon picker"
   ],
-  "icon": "./resources/icon.png",
+  "icon": "resources/icon.png",
   "qna": "https://github.com/michioxd/vscode-mui-material-icon-picker/discussions",
   "activationEvents": [],
   "main": "./out/extension.js",
