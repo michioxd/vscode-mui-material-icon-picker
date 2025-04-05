@@ -139,6 +139,7 @@ export default function Selector() {
     const [style, setStyle] = React.useState("Filled");
     const timeout = React.useRef<NodeJS.Timeout | null>(null);
     const [indexed, setIndexed] = React.useState(false);
+    const searchInputRef = React.useRef<any>(null);
 
     React.useEffect(() => {
         if (timeout.current) {
@@ -201,6 +202,12 @@ export default function Selector() {
         })();
     }, [indexed]);
 
+    React.useEffect(() => {
+        if (searchInputRef.current) {
+            searchInputRef.current.focus();
+        }
+    }, []);
+
     return (
         <>
             <div className={cls.MainSelector} data-vscode-context='{"webviewSection": "main", "preventDefaultContextMenuItems": true}'>
@@ -242,7 +249,7 @@ export default function Selector() {
                     </div>
                 </div>
                 <div className={cls.Selector}>
-                    <VSCodeTextField value={search} onInput={(e) => setSearch((e.target as HTMLInputElement)?.value)} placeholder="Search icons...">
+                    <VSCodeTextField ref={searchInputRef} value={search} onInput={(e) => setSearch((e.target as HTMLInputElement)?.value)} placeholder="Search icons...">
                         <span slot="start" className="codicon codicon-search"></span>
                     </VSCodeTextField>
                     <VSCodePanels activeid={active}>
