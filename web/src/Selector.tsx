@@ -146,7 +146,7 @@ export default function Selector() {
         }
         timeout.current = setTimeout(() => {
             setRealSearch(search);
-        }, 1000);
+        }, 500);
     }, [search]);
 
     React.useEffect(() => {
